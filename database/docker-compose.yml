@@ -1,0 +1,11 @@
+version: '3'
+services:
+  database:
+    build:
+      context: ./database/src # Ruta a la carpeta del microservicio
+    ports:
+      - "8000:8000" # Mapea el puerto del contenedor al puerto del host
+    environment:
+      - MONGODB_URI=mongodb+srv://admin:admin@cluster0.hrersoj.mongodb.net/star_wars 
+    volumes:
+      - ./database:/index.js # Monta el código fuente en el contenedor
