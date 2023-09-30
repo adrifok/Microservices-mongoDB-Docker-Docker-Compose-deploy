@@ -17,3 +17,4 @@ router.get("/:model/:id", validateModel, async (req, res) => {
 });
 
 module.exports = router;
+ 

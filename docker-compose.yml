@@ -1,35 +1,41 @@
 version: '3'
+
 services:
+  gateway:
+      container_name: gateway
+      restart: always
+      build: ./gateway
+      ports:
+        - "8000:8000"
+    
   characters:
-    build:
-      context: .  # Use the current directory for Docker build context
-      dockerfile: Dockerfile  # Use the single Dockerfile
-    ports:
-      - "8001:3000"
-    environment:
-      MICROSERVICE_NAME: "characters"
-
+      container_name: characters
+      restart: always
+      build: ./characters
+      ports:
+        - ":8001"
+    
   films:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8002:3000"
-    environment:
-      MICROSERVICE_NAME: "films"
-
+      container_name: films
+      restart: always
+      build: ./films
+      ports:
+        - ":8002"
+    
   planets:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8003:3000"
-    environment:
-      MICROSERVICE_NAME: "planets"
+      container_name: planets
+      restart: always
+      build: ./planets
+      ports:
+        - ":8003"
 
-  mongodb:
-    image: mongo:latest
-    ports:
-      - "8004:27017"
-    volumes:
-      - ./data:/data/db
+  database:
+      container_name: database
+      restart: always
+      build: ./database
+      ports:
+       - ":8004"
+
+  
+
+ 

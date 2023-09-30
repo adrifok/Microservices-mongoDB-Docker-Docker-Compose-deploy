@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
-const {MONGO_URI} = require("../config/envs");
+const { MONGODB_URI } = require("../config/envs");
 
-const conn = mongoose.createConnection(MONGO_URI);
+console.log("MONGODB_URI:", MONGODB_URI);
+
+const conn = mongoose.createConnection(MONGODB_URI);
+
+console.log("Connected to MongoDB");
+
 
 // const Character = conn.model("Character", require("./schemas/characterSchema"));
 // const Film = conn.model("Film", require("./schemas/filmSchema"));

@@ -26,6 +26,9 @@ planetSchema.statics.get = async function (id) {
       .populate("residents", ["_id", "name"])
       .populate("films", ["_id", "title"]);
   };
-
+  
+  planetSchema.statics.insert = async function (planets) {
+    return await this.create(planets);
+  };
 
 module.exports = planetSchema;
